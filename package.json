@@ -1,0 +1,40 @@
+{
+  "name": "@consento/hlc",
+  "version": "1.0.0",
+  "description": "A Hybrid Logical Clock implementation that comes with a codec to store it as Uint8Array (compatible to codecs)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "unit": "node test.js",
+    "test": "npm run lint && npm run cover",
+    "cover": "nyc npm run unit"
+  },
+  "keywords": [
+    "hybrid",
+    "logical",
+    "clock",
+    "hlc",
+    "vector",
+    "lambort"
+  ],
+  "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "fresh-tape": "^5.0.4",
+    "nyc": "^15.1.0",
+    "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "bigint-time": "^1.0.2",
+    "longfn": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consento-org/hlc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/consento-org/hlc/issues"
+  },
+  "homepage": "https://github.com/consento-org/hlc#readme"
+}

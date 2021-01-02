@@ -1,0 +1,36 @@
+name: Testing on devices
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - id: ubuntu:node:10
+            build: true
+            os: ubuntu-latest
+            type: node
+            node-version: 10
+          - id: windows:node:12
+            build: false
+            os: windows-latest
+            type: node
+            node-version: 12
+          - id: ubuntu:node:14
+            build: true
+            os: ubuntu-latest
+            type: node
+            node-version: 14
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm i
+    - name: Test in node
+      run: npm test
