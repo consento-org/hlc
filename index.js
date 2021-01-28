@@ -2,17 +2,19 @@ const bigIntTime = require('bigint-time')
 const { toBytesBE, fromBigInt, fromInt, fromBytesBE, toBigInt, MAX_UNSIGNED_VALUE } = require('longfn')
 
 function writeUint32 (target, offset, num) {
-  target[offset] = num & 0xFF
-  target[offset + 1] = (num & 0xFF00) >> 8
-  target[offset + 2] = (num & 0xFF0000) >> 16
-  target[offset + 3] = (num & 0xFF000000) >> 24
+  target[offset] = num >>> 24
+  target[offset + 1] = (num >>> 16) & 0xFF
+  target[offset + 2] = (num >>> 8) & 0xFF
+  target[offset + 3] = num & 0xFF
 }
 
 function readUint32 (target, offset) {
-  return target[offset] |
-    (target[offset + 1] << 8) |
-    (target[offset + 2] << 16) |
-    (target[offset + 3] << 24)
+  return (target[offset] * 0x1000000) +
+    (
+      (target[offset + 1] << 16) |
+      (target[offset + 2] << 8) |
+      target[offset + 3]
+    )
 }
 
 const TMP_INT = fromInt(0)
