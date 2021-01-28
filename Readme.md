@@ -174,7 +174,7 @@ const clock = new CockroachHLC({ maxOffset: 20 })
 
 ## Deserialization
 
-The system allows not just the de-/serialization of timestamps using Uint8Array or Buffers:
+The system allows not just the de-/serialization of timestamps using **sortable** Uint8Array or Buffers:
 
 ```javascript
 HLC.codec.encode(timestamp, [byob, offset])

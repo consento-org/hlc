@@ -1,5 +1,5 @@
 const bigIntTime = require('bigint-time')
-const { toBytesLE, fromBigInt, fromInt, fromBytesLE, toBigInt, MAX_UNSIGNED_VALUE } = require('longfn')
+const { toBytesBE, fromBigInt, fromInt, fromBytesBE, toBigInt, MAX_UNSIGNED_VALUE } = require('longfn')
 
 function writeUint32 (target, offset, num) {
   target[offset] = num & 0xFF
@@ -73,12 +73,12 @@ const codec = Object.freeze({
       out = new Uint8Array(12)
     }
     offset = byob ? offset : 0
-    toBytesLE(fromBigInt(current.wallTime, true, TMP_INT), offset, out)
+    toBytesBE(fromBigInt(current.wallTime, true, TMP_INT), offset, out)
     writeUint32(out, offset + 8, current.logical)
     return out
   },
   decode (array, offset = 0) {
-    return new Timestamp(toBigInt(fromBytesLE(array, true, offset, TMP_INT)), readUint32(array, offset + 8))
+    return new Timestamp(toBigInt(fromBytesBE(array, true, offset, TMP_INT)), readUint32(array, offset + 8))
   }
 })
 

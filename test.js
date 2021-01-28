@@ -96,10 +96,10 @@ test('Bytes de/encoding', t => {
 test('Bytes de-/encoding with byob and offset', t => {
   const time = new HLC.Timestamp(15n, 5)
   const bytes = Buffer.alloc(20)
-  t.equals(HLC.codec.encode(time, bytes).toString('hex'), '0f00000000000000050000000000000000000000')
+  t.equals(HLC.codec.encode(time, bytes).toString('hex'), '000000000000000f050000000000000000000000')
   bytes.fill(0)
   t.equals(time.encode(bytes, 2), bytes)
-  t.equals(bytes.toString('hex'), '00000f0000000000000005000000000000000000')
+  t.equals(bytes.toString('hex'), '0000000000000000000f05000000000000000000')
   const restored = HLC.codec.decode(bytes, 2)
   t.equals(restored.compare(time), 0)
   t.end()
