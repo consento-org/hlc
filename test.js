@@ -107,7 +107,7 @@ test('Bytes de-/encoding with byob and offset', t => {
 test('Bytes encoding on a too-small array', t => {
   t.throws(
     () => new HLC.Timestamp().encode(new Uint8Array(2)),
-    new Error('The provided Uint8Array is too small. 12b required but only 2b given.')
+    new Error('The provided Uint8Array is too small. 12 byte required but only 2 byte given.')
   )
   t.end()
 })

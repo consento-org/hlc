@@ -66,7 +66,7 @@ const codec = Object.freeze({
     let out
     if (byob) {
       if (byob.byteLength < 12) {
-        throw new Error(`The provided Uint8Array is too small. 12b required but only ${byob.byteLength}b given.`)
+        throw new Error(`The provided Uint8Array is too small. 12 byte required but only ${byob.byteLength} byte given.`)
       }
       out = byob
     } else {
