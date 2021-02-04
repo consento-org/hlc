@@ -34,6 +34,7 @@ declare namespace HLC {
     encode <Input extends Uint8Array> (byob: Uint8Array, offset?: number): Input
     encode (): Uint8Array
     compare (other: Timestamp): number
+    static compare (a: Timestamp, b: Timestamp): number
     toJSON(): any
   }
   interface Options {

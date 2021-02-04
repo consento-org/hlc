@@ -95,6 +95,14 @@ class Timestamp {
     }
   }
 
+  static compare (a, b) {
+    if (a.wallTime > b.wallTime) return 1
+    if (a.wallTime < b.wallTime) return -1
+    if (a.logical > b.logical) return 1
+    if (a.logical < b.logical) return -1
+    return 0
+  }
+
   static bigger (a, b) {
     return a.compare(b) === -1 ? b : a
   }
@@ -111,11 +119,7 @@ class Timestamp {
   }
 
   compare (other) {
-    if (this.wallTime > other.wallTime) return 1
-    if (this.wallTime < other.wallTime) return -1
-    if (this.logical > other.logical) return 1
-    if (this.logical < other.logical) return -1
-    return 0
+    return Timestamp.compare(this, other)
   }
 }
 
