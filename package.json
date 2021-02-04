@@ -1,6 +1,6 @@
 {
   "name": "@consento/hlc",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A Hybrid Logical Clock implementation that comes with a codec to store it as Uint8Array (compatible to codecs)",
   "type": "commonjs",
   "main": "index.js",
