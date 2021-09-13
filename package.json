@@ -8,7 +8,8 @@
     "lint": "standard",
     "unit": "node test.js",
     "test": "npm run lint && npm run cover",
-    "cover": "nyc npm run unit"
+    "cover": "nyc npm run unit",
+    "render-faq": "./faq/render"
   },
   "keywords": [
     "hybrid",

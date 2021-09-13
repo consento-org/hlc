@@ -8,8 +8,8 @@ separate devices.
 another known timestamp, in which case it will increment a counter.
 
 It is comparable to [CockroachDB's implementation][CockroachHLC].
-It creates Timestamps with a nanosecond (uint64) WallClock _(using [bigint-time][bigint-time])_ that supports de-/encoding
-from Uint8Arrays _(compatible with [codecs][codecs])_ and JSON.
+It creates Timestamps with a nanosecond WallClock _(using [bigint-time][bigint-time])_ that supports de-/encoding
+to fixed size 96bit Uint8Arrays _(compatible with [codecs][codecs])_ or JSON object.
 
 [HLC]: https://muratbuffalo.blogspot.com/2014/07/hybrid-logical-clocks.html
 [CockroachHLC]: https://github.com/cockroachdb/cockroach/blob/663fcf17cb8789a2c46a719e0107a15400eee918/pkg/util/hlc/hlc.go
@@ -39,6 +39,12 @@ const restored = HLC.codec.decode(bytes)
 
 const buffer = timestamp.encode(Buffer.allocUnsafe(16)) // If you prefer a Buffer instance
 ```
+
+## FAQ
+
+- [When to use HLCs?](https://github.com/consento-org/hlc/blob/main/faq/when-hlc.md)
+- [Why HLC timestamps are not unique?](https://github.com/consento-org/hlc/blob/main/faq/non-unique.md)
+- [Why use 96bit instead of 64bit?](https://github.com/consento-org/hlc/blob/main/faq/why-96bit.md)
 
 ## Clock Drift
 
