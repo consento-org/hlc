@@ -104,7 +104,6 @@ are to be sorted out, no matter how many clients may appear.
     are not that good for short urls or to tell someone over the telephone.
 `)
 
-
 function render (strings, ...keys) {
   const result = [strings[0]]
   keys.forEach(function (key, i) {
